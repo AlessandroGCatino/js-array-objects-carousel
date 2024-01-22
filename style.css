@@ -1,5 +1,58 @@
 *{
-margin: 0;
-padding: 0;
-box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #121212;
+    font-family: sans-serif;
+    color: white;
+}
+
+main{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#carousel{
+    position: relative;
+}
+
+figure img{
+    width: 400px;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+}
+
+
+.fa-chevron-down,
+.fa-chevron-up{
+    position: absolute;
+    background-color: #121212;
+    border-radius: 50%;
+    padding: 10px;
+    transform: translateX(-50%);
+    left: 50%;
+    cursor: pointer;
+}
+
+.fa-chevron-up{
+    top: 10px;
+}
+
+.fa-chevron-down{
+    bottom: 10px;
+}
+
+figure img {
+    display: none;
+}
+
+figure img.active{
+    display: block;
 }
