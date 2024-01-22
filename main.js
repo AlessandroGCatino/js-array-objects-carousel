@@ -10,35 +10,36 @@ Aggiungere bottoni di start/stop e di inversione del meccanismo di autoplay. */
 const arrowDownHtml = document.querySelector('.fa-chevron-down')
 const arrowUpHtml = document.querySelector('.fa-chevron-up')
 
-const figureHtml = document.querySelector('figure')
+const mainfigureHtml = document.querySelector('#mainImage figure')
+const thumbnailHtml = document.getElementById("thumbnails")
 
-console.log( figureHtml )
+console.log( mainfigureHtml )
 
 const imagesSeeds = [
     {
         name : "First Photo",
         desc : "This is the first image of the carousel",
-        image : "https://picsum.photos/seed/200/400/300"
+        image : "https://picsum.photos/seed/200/500/400"
     },
     {
         name : "Second Photo",
         desc : "This is the second image of the carousel",
-        image : "https://picsum.photos/seed/300/400/300"
+        image : "https://picsum.photos/seed/300/500/400"
     },
     {
         name: "Third Photo",
         desc: "This is the third image of the carousel",
-        image : "https://picsum.photos/seed/400/400/300"
+        image : "https://picsum.photos/seed/400/500/400"
     },
     {
         name: "Fourth Photo",
         desc: "This is the fourth image of the carousel",
-        image : "https://picsum.photos/seed/500/400/300"
+        image : "https://picsum.photos/seed/500/500/400"
     },
     {
         name: "Fifth Photo",
         desc: "This is the fifth image of the carousel",
-        image : "https://picsum.photos/seed/600/400/300"
+        image : "https://picsum.photos/seed/600/500/400"
     }
 ];
 
@@ -49,18 +50,20 @@ Al click dell'utente sulle frecce verso sinistra o destra, l'immagine attiva div
 
 for( let i = 0; i < imagesSeeds.length; i++ ){
     if( i === 0 ){
-        figureHtml.innerHTML += `
+        mainfigureHtml.innerHTML += `
             <img class="active" src="${imagesSeeds[i].image}" alt="immagini carosello">
             <h2 class="active">${imagesSeeds[i].name}</h2>
             <p class="active">${imagesSeeds[i].desc}</p>
               `
-         
+         thumbnailHtml.innerHTML += `<figure><img class="active" src="${imagesSeeds[i].image}" alt="immagini carosello"></img></figure>`
     } else {
-        figureHtml.innerHTML += `
+        mainfigureHtml.innerHTML += `
         <img src="${imagesSeeds[i].image}" alt="immagini carosello">
         <h2>${imagesSeeds[i].name}</h2>
         <p>${imagesSeeds[i].desc}</p>
           `
+
+        thumbnailHtml.innerHTML += `<figure><img src="${imagesSeeds[i].image}" alt="immagini carosello"></img></figure>`
     }    
 }
 
@@ -69,11 +72,16 @@ Aggiungere il **ciclo infinito** del carosello. Ovvero se la miniatura attiva è
 
 let immagineCorrente = 0
 
-arrowUpHtml.addEventListener( "click", function(){
+arrowUpHtml.addEventListener( "click", scrollUp)
+
+arrowDownHtml.addEventListener( "click", scrollDown)
+
+
+function scrollUp(){
     
-    let arrayTagsImmagini = document.querySelectorAll( 'figure img' )
-    let arrayTagsTitoli = document.querySelectorAll( 'figure h2' )
-    let arrayTagsDesc = document.querySelectorAll( 'figure p' )
+    let arrayTagsImmagini = document.querySelectorAll( '#mainImage figure img' )
+    let arrayTagsTitoli = document.querySelectorAll( '#mainImage figure h2' )
+    let arrayTagsDesc = document.querySelectorAll( '#mainImage figure p' )
         
     arrayTagsImmagini[immagineCorrente].classList.remove( 'active' )
     arrayTagsTitoli[immagineCorrente].classList.remove( 'active' )
@@ -88,14 +96,14 @@ arrowUpHtml.addEventListener( "click", function(){
     arrayTagsImmagini[immagineCorrente].classList.add( 'active' )
     arrayTagsTitoli[immagineCorrente].classList.add( 'active' )
     arrayTagsDesc[immagineCorrente].classList.add( 'active' )
-    
-} )
+    return
+}
 
-arrowDownHtml.addEventListener( "click", function(){
+function scrollDown() {
 
-    let arrayTagsImmagini = document.querySelectorAll( 'figure img' )
-    let arrayTagsTitoli = document.querySelectorAll( 'figure h2' )
-    let arrayTagsDesc = document.querySelectorAll( 'figure p' )
+    let arrayTagsImmagini = document.querySelectorAll( '#mainImage figure img' )
+    let arrayTagsTitoli = document.querySelectorAll( '#mainImage figure h2' )
+    let arrayTagsDesc = document.querySelectorAll( '#mainImage figure p' )
         
     arrayTagsImmagini[immagineCorrente].classList.remove( 'active' )
     arrayTagsTitoli[immagineCorrente].classList.remove( 'active' )
@@ -111,4 +119,4 @@ arrowDownHtml.addEventListener( "click", function(){
     arrayTagsTitoli[immagineCorrente].classList.add( 'active' )
     arrayTagsDesc[immagineCorrente].classList.add( 'active' )
 
-} )
+}
