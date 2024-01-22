@@ -17,3 +17,38 @@ BONUS 2:
 Aggiungere funzionalità di autoplay: dopo un certo periodo di tempo (3 secondi) l’immagine attiva dovrà cambiare alla successiva.
 BONUS 3:
 Aggiungere bottoni di start/stop e di inversione del meccanismo di autoplay. */
+
+const arrowDownHtml = document.querySelector('.fa-chevron-down')
+const arrowUpHtml = document.querySelector('.fa-chevron-up')
+
+const figureHtml = document.querySelector('figure')
+
+console.log( figureHtml )
+
+const imagesSeeds = [
+    {
+        name : "First Photo",
+        desc : "This is the first image of the carousel",
+        image : "https://picsum.photos/seed/200/400/300"
+    },
+    {
+        name : "Second Photo",
+        desc : "This is the second image of the carousel",
+        image : "https://picsum.photos/seed/300/400/300"
+    },
+    {
+        name: "Third Photo",
+        desc: "This is the third image of the carousel",
+        image : "https://picsum.photos/seed/400/400/300"
+    },
+    {
+        name: "Fourth Photo",
+        desc: "This is the fourth image of the carousel",
+        image : "https://picsum.photos/seed/500/400/300"
+    },
+    {
+        name: "Fifth Photo",
+        desc: "This is the fifth image of the carousel",
+        image : "https://picsum.photos/seed/600/400/300"
+    }
+];
